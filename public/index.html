@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MRKL RADIO</title>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="player.css">
+    <style>
+        body {
+            background-image: url('https://drive.google.com/uc?export=view&id=15LddYiujjNtWUf6BSeNvn6Ykhkx4IRQu');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            height: 100vh;
+            font-family: 'Open Sans', sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .radio-title {
+            text-align: center;
+            font-size: 3em;
+            font-weight: bold;
+            margin-top: auto; /* This pushes the title downwards */
+        }
+
+        .radio-player {
+            margin-bottom: auto; /* This pushes the player upwards */
+        }
+     </style>
+</head>
+
+<body>
+    <div class="radio-title">
+        MRKL RADIO
+    </div>
+    <div class="radio-player">
+        <audio src="" class="visually-hidden" id="stream"></audio>
+        <div class="player-controls">
+            <button name="play-pause" class="button play-pause-button" aria-label="Play/pause">
+                <i class="fas fa-play" aria-hidden="true"></i>
+            </button>
+            <div class="volume-and-title">
+                <div class="currently-playing" aria-label="Currently playing">
+                    <span class="currently-playing-label">Now Playing:</span>
+                    <span class="currently-playing-title">Select a Station</span>
+                </div>
+                <div class="currently-playing-artist" aria-label="Currently playing artist">
+                    <!-- Artist and song title will appear here -->
+                </div>
+                <div class="volume-controls">
+                    <button name="mute" class="button mute-button" aria-label="Mute/unmute">
+                        <i class="fas fa-volume-down" aria-hidden="true"></i>
+                    </button>
+                    <input type="range" name="volume" class="volume" min="0" max="1" step="0.05" value="1.0" aria-label="Volume">
+                </div>
+            </div>
+        </div>
+        <select id="stationSelector">
+            <!-- Station options will be populated here by the player.js script -->
+        </select>
+    </div>
+    <script src="player.js"></script>
+</body>
+
+</html>
+
+
+

@@ -1,0 +1,16 @@
+{
+  "name": "icy-metadata-examples",
+  "version": "0.0.1",
+  "description": "Example icy-metadata usage",
+  "main": "example1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "icy-metadata": "0.0.2"
+  }
+}
