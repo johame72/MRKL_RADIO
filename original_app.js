@@ -1,14 +1,8 @@
 import express from 'express';
 import icy from 'icy';
-import bodyParser from 'body-parser'; // Newly added
-import axios from 'axios'; // Newly added (You'll need to install this)
 
 const app = express();
 const PORT = 8106;
-
-// Add body-parser middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 const STATIONS = {
     "KEXP": {
@@ -100,21 +94,6 @@ const STATIONS = {
         name: "WOOD_89.1",
         url: "https://streamdb3web.securenetsystems.net/CirrusOmni/index.cfm?stationCallSign=KCLC",
         type: "audio/mp3"
-    
-
-// New endpoint to fetch artist news
-app.get('/artist-news/:artistName', async (req, res) => {
-    const artistName = req.params.artistName;
-    const API_KEY = 'YOUR_API_KEY_HERE';
-    const end_date = new Date().toISOString();
-    const start_date = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString();
-    const ENDPOINT = `https://newsapi.org/v2/everything?q=${artistName}&from=${start_date}&to=${end_date}&apiKey=${API_KEY}`;
-
-    try {
-        const response = await axios.get(ENDPOINT);
-        res.json(response.data.articles);
-    } catch (error) {
-        res.status(500).json({ error: 'Failed to fetch news' });
     }
 };
 
@@ -125,12 +104,6 @@ app.use(express.static('public'));
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/public/index.html');
-});
-
-// Placeholder endpoint for artist tour info
-app.get('/artist-tour/:artistName', (req, res) => {
-    // Placeholder data for now
-    res.json({ tourDates: "Sample tour date information" });
 });
 
 app.get('/metadata/:station', (req, res) => {
@@ -165,6 +138,8 @@ app.get('/metadata/:station', (req, res) => {
         }
     });
 });
+
+
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
