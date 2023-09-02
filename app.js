@@ -1,3 +1,6 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import express from 'express';
 import icy from 'icy';
 import bodyParser from 'body-parser'; // Newly added
@@ -100,6 +103,8 @@ const STATIONS = {
         name: "WOOD_89.1",
         url: "https://streamdb3web.securenetsystems.net/CirrusOmni/index.cfm?stationCallSign=KCLC",
         type: "audio/mp3"
+    }
+};
     
 
 // New endpoint to fetch artist news
@@ -116,7 +121,7 @@ app.get('/artist-news/:artistName', async (req, res) => {
     } catch (error) {
         res.status(500).json({ error: 'Failed to fetch news' });
     }
-};
+});
 
 const clients = {};
 
